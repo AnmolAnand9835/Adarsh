@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adarsh's Website</title>
+  <style>
+    :root {
+      --bg-color: #f0f2f5;
+      --text-color: #333;
+      --accent-color: #3498db;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --accent-color: #8ab4f8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+      opacity: 0;
+      animation: fadeInBody 1s ease forwards;
+    }
+
+    @keyframes fadeInBody {
+      to {
+        opacity: 1;
+      }
+    }
+
+    h1, h2, h3 {
+      color: var(--accent-color);
+    }
+
+    .typewriter {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      color: var(--accent-color);
+      overflow: hidden;
+      border-right: 3px solid var(--accent-color);
+      white-space: nowrap;
+      width: fit-content;
+      margin: 30px auto;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: var(--accent-color); }
+    }
+
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 5px;
+    }
+
+    img {
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    video {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      display: block;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+      z-index: 999;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 14px;
+      font-size: 20px;
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+  <button id="backToTop" onclick="scrollToTop()">⬆️</button>
+
+  <h1 class="typewriter"></h1>
+
+  <h2 class="fade-in">Images of Rishu</h2>
+  <img src="rishu.jpg" alt="rishu" height="123">
+  <img src="rishu2.jpg" alt="rishu" height="123">
+  <img src="rishu3.jpg" alt="rishu" height="123">
+  <img src="rishu4.jpg" alt="rishu" height="123">
+
+  <h2 class="fade-in">Images of Adarsh</h2>
+  <img src="adarsh.jpg" alt="adarsh" height="123">
+  <img src="adarsh.jpg" alt="adarsh" height="123">
+  <img src="adarsh.jpg" alt="adarsh" height="123">
+
+  <video src="adarsh2.mp4" autoplay muted controls loop class="fade-in"></video>
+
+  <h3 class="fade-in">Click here to download <a href="VSCodeUserSetup-x64-1.99.0.exe">VS Code</a></h3>
+  <h3 class="fade-in">Click here to download <a href="mingw-get-setup (2).exe">MinGW</a></h3>
+  <h3 class="fade-in">Click here to download <a href="C_ChapterWise_Notes.zip">C Notes</a></h3>
+
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img src="" alt="Full View">
+  </div>
+
+  <script>
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Scroll to top
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Show back-to-top button
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    // Lightbox
+    const images = document.querySelectorAll("img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+
+    images.forEach((img) => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+      });
+    });
+
+    // Fade-in on scroll
+    const fadeIns = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    fadeIns.forEach((el) => observer.observe(el));
+
+    // Typewriter effect
+    const text = "This is Adarsh's Website";
+    const typeTarget = document.querySelector(".typewriter");
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        typeTarget.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    typeWriter();
+  </script>
+</body>
+</html>
